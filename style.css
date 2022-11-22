@@ -1,0 +1,92 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap');
+
+
+body {
+    background-image: url('./images/sky.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(46, 101, 168);
+}
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+.header {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.rule {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 35px;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button {
+    margin: 20px;
+    width: 200px;
+    border: none;
+    color: white;
+    background-color: rgb(255, 89, 0);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 0 #f9e506;
+    transition: ease-out 0.3s;
+    outline: none;2
+}
+
+.button:hover {
+    box-shadow: inset 200px 0 0 0  #f9e506;
+    cursor: pointer;
+    color: black;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+#p-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    font-size: 80px;
+}
+
+#c-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    font-size: 80px;
+}
+
+#player {
+    margin-right: 100px;
+}
+
+.last {
+    text-align: center;
+}
+
+.copy {
+    font-size: medium;
+    text-align: center;
+    margin-top: 20px;
+}
+
+

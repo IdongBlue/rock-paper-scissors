@@ -1,82 +1,110 @@
+let playerScore = 0;
+let computerScore = 0;
+
+const pScore = document.querySelector('#p-score');
+const cScore = document.querySelector('#c-score');
+
+
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === "rock") {
     switch (computerSelection) {
       case "rock":
-        return "You Draw! Rock matches Rock";
         break;
       case "paper":
-        return "You Lose! Paper beats Rock";
+        computerScore++;
+        cScore.innerHTML = computerScore;
         break;
       case "scissors":
-        return "You Win! Rock beats Scissors";
+        playerScore++;
+        pScore.innerHTML = playerScore;
         break;
     }
   } else if (playerSelection === "paper") {
     switch (computerSelection) {
       case "rock":
-        return "You Win! Paper Beats Rock";
+        playerScore++;
+        pScore.innerHTML = playerScore;
         break;
       case "paper":
-        return "You Draw! Paper Matches Paper";
         break;
       case "scissors":
-        return "You Lose! Scissors Beats Paper";
+        computerScore++;
+        cScore.innerHTML = computerScore;
         break;
     }
   } else {
     switch (computerSelection) {
       case "rock":
-        return "You Lose! Rock Beats Scissors";
+        computerScore++;
+        cScore.innerHTML = computerScore;
         break;
       case "paper":
-        return "You Win! Scissors Beats Paper!";
+        playerScore++;
+        pScore.innerHTML = playerScore;
         break;
       case "scissors":
-        return "You Draw! Scissors Matches Scissors";
         break;
     }
   }
 }
 
-function game() {
-  let result = 0;
 
-  for (let i = 0; i < 5; i++) {
-    function getComputerChoice() {
-      const list = ["rock", "paper", "scissors"];
-      let index = Math.floor(Math.random() * list.length);
-      let choice = list[index];
-      return choice;
-    }
+function getComputerChoice() {
+  const list = ["rock", "paper", "scissors"];
+  let index = Math.floor(Math.random() * list.length);
+  let choice = list[index];
+  return choice;
+}
 
-    function getPlayerChoice() {
-      while (true) {
-        let choice = prompt("rock, paper, or scissors");
-        choice = choice.toLowerCase();
-        if (choice === "rock" || choice === "paper" || choice === "scissors") {
-          return choice;
-          break;
-        }
-      }
-    }
-
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice();
-
-    var play = playRound(playerSelection, computerSelection);
-    console.log(play);
-    if (play.charAt(4) === "W") {
-      result++;
-    } else if (play.charAt(4) === "D") {
-      result += 0.5;
-    }
-  }
-
-  if (result > 2.5) {
-    console.log(`You win the game with a result of ${result}/5`);
-  } else if (result < 2.5) {
-    console.log(`You lose the game with a result of ${result}/5`);
-  } else {
-    console.log(`You draw the game with a result of ${result}/5`);
+function endGame() {
+  if (playerScore === 5) {
+    swal({title: "Good job!", text: "You win the game", icon: 
+"success", button: "Play Again"}).then(function(){ 
+   location.reload();
+   }
+);
+  } else if (computerScore === 5) {
+    swal({title: "Better luck next time!", text: "You lose the game", icon: 
+"error", button: "Play Again"}).then(function(){ 
+   location.reload();
+   }
+);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn1 = document.querySelector('#btn1');
+  btn1.addEventListener('click', () => {
+    let playerSelection = "rock";
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection,computerSelection);
+    endGame();
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn2 = document.querySelector('#btn2');
+  btn2.addEventListener('click', () => {
+    let playerSelection = "paper";
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection,computerSelection);
+    endGame();
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn3 = document.querySelector('#btn3');
+  btn3.addEventListener('click', () => {
+    let playerSelection = "scissors";
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection,computerSelection);
+    endGame();
+    })
+  });
+
+
+   
+   
+  
+
+
